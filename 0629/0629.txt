@@ -1,0 +1,108 @@
+assignment (대입, 할당 : 우측 수식의 연산 결과를 왼쪽의 변수에 대입)
+variable = expression
+            literal or constant     a = 1
+            variable                a = b
+            operator                a = b + 1
+            function                a = sum(1, 2) * a + 1
+                └literal, variable, operator, function
+
+<, <=, >, >=, ==, !=, in, not in, is, is not
+not, and, or
+
+if ():
+    pass
+else :
+    print(" ")
+
+1. if
+2. if else
+3. if elif else
+
+match - case
+match 수식 :
+    case 값1 :
+    case 값2 :
+    ...
+    case _ :
+
+삼항연산자
+(조건식)?"A":"B"
+
+파이썬에서는 "A" if 조건식 else 조건식 
+"합격" if score >= 80 else "불합격"
+가독성 떨어져서 잘 안 쓴다.
+
+프로그래밍 에러
+1. syntax(구문) error
+2. run time error(exception)
+3. semantic error
+
+for(초기식; 조건식; 증감식)
+
+파이썬에서는
+for 변수 in 리스트(또는 튜플, 문자열):
+    실행문
+
+range(start, stop, step)
+
+함수
+def 함수_이름(매개변수):
+    수행할 문장
+
+파일의 구성
+1. 파일에 대한 정보 (파일 이름과 확장자, 파일 소유자, 파일 생선일, etc)
+2. 파일 내용
+
+파일 경로와 슬래시(/)
+파이썬 코드에서 파일 경로를 표시할 때 "C:/doit/새파일.txt"처럼 슬래시(/)를 사용할 수 있다.
+만약 역슬래시(\)를 사용한다면 "C:\\doit\\새파일.txt"처럼 역슬래시를 2개 사용하거나
+r"C:\doit\새파일.txt"와 같이 문자열 앞에 r 문자(raw string)를 덧붙여 사용해야 한다.
+왜냐하면 "C:\note\test.txt"처럼 파일 경로에 \n과 같은 이스케이프 문자가 있을 경우,
+줄바꿈 문자로 해석되어 의도했던 파일 경로와 달라지기 때문이다.
+
+인코딩과 UTF-8
+
+컴퓨터는 문자를 직접 저장하지 못하고 숫자로 변환해서 저장한다.
+이때 어떤 문자를 어떤 숫자로 변환할지 정하는 규칙이 인코딩(Encoding)이다.
+예를 들어 'A'는 65, 'B'는 66으로 저장하는 식이다.
+
+UTF-8은 현재 가장 널리 사용되는 인코딩 방식으로,
+전 세계 모든 문자(한글, 영어, 중국어, 일본어, 이모지 등)를 표현할 수 있다.
+파일을 저장하거나 읽을 때 UTF-8을 사용하면 어떤 컴퓨터에서든 한글이 깨지지 않고 올바르게 표시된다.
+
+# newfile.py
+# open -> use -> close
+f = open("새파일.txt", 'w')
+f.close()
+
+# newfile2.py
+f = open("C:/doit/새파일.txt", 'w') # 경로 속에 doit 폴더가 없으면 오류 발생
+f.close()
+
+# 폴더 만드는 코드
+import os
+
+os.makedirs("C:/doit", exist_ok=True)
+
+f = open("C:/doit/새파일.txt", "w")
+f.close()
+
+# sys1.py
+import sys
+
+args = sys.argv[1:]
+for i in args:
+    print(i)
+
+# cmd
+# cd C:\Users\user\Documents\intel\0629
+
+# python sysArgvEx01.py
+# 출력 :
+# 아무것도  안 나옴
+
+# python sysArgvEx01.py 123 456 789
+# 출력 :
+# 123
+# 456
+# 789
