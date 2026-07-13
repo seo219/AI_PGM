@@ -1,0 +1,1540 @@
+문제 1. Python 데이터 처리
+다음 리스트가 있다.
+scores = [78, 85, 92, 68, 95, 88, 74]
+다음을 수행하시오.
+1.1 평균 점수를 계산하시오.
+1.2 최고점과 최저점을 출력하시오.
+1.3 80점 이상만 새로운 리스트로 생성하시오.
+1.4 평균 이상인 학생 수를 출력하시오.
+1.5 작성한 코드에 각 줄의 기능을 주석으로 설명하시오.
+
+1번 프롬프트
+문제 1. Python 데이터 처리
+다음 리스트가 있다.
+scores = [78, 85, 92, 68, 95, 88, 74]
+다음을 수행하시오.
+1.1 평균 점수를 계산하시오.
+1.2 최고점과 최저점을 출력하시오.
+1.3 80점 이상만 새로운 리스트로 생성하시오.
+1.4 평균 이상인 학생 수를 출력하시오.
+1.5 작성한 코드에 각 줄의 기능을 주석으로 설명하시오.
+
+답변
+# 학생 점수 리스트 생성
+scores = [78, 85, 92, 68, 95, 88, 74]
+
+# 점수의 평균 계산
+average = sum(scores) / len(scores)
+
+# 평균 점수 출력
+print("평균 점수:", average)
+
+# 최고점 계산
+highest = max(scores)
+
+# 최저점 계산
+lowest = min(scores)
+
+# 최고점과 최저점 출력
+print("최고점:", highest)
+print("최저점:", lowest)
+
+# 80점 이상인 점수만 새로운 리스트로 생성
+high_scores = [score for score in scores if score >= 80]
+
+# 80점 이상 리스트 출력
+print("80점 이상:", high_scores)
+
+# 평균 이상인 학생 수 계산
+count = len([score for score in scores if score >= average])
+
+# 평균 이상인 학생 수 출력
+print("평균 이상인 학생 수:", count)
+
+
+
+2번 프롬프트
+1.3 80점 이상만 새로운 리스트로 생성하시오.high_scores = [score for score in scores if score >= 80]이건 무슨 문법인지 알려줘
+
+답변
+이 코드는 리스트 컴프리헨션(List Comprehension, 리스트 내포)문법입니다. 기존 리스트에서 조건에 맞는 값만 골라 새로운 리스트를 간단하게 만들 때 사용합니다.
+문법 형태
+새로운_리스트 = [표현식 for 변수 in 반복가능한_객체 if 조건]
+• 표현식: 새로운 리스트에 넣을 값
+• for 변수 in 반복가능한_객체: 리스트를 하나씩 순회
+• if 조건: 조건을 만족하는 값만 저장(생략 가능)
+
+
+문제의 코드 분석
+high_scores = [score for score in scores if score >= 80]
+하나씩 보면,
+• score→ 새로운 리스트에 저장할 값
+• for score in scoresscores리스트를 하나씩 꺼내서 score에 저장
+• if score >= 80→ 80점 이상인 경우에만 저장
+즉,
+scores 리스트를 하나씩 검사하여 80점 이상인 점수만 high_scores에 저장한다.
+
+
+같은 기능을 일반 반복문으로 작성하면
+high_scores = []              # 빈 리스트 생성
+
+for score in scores:          # scores를 하나씩 확인
+    if score >= 80:           # 80점 이상이면
+        high_scores.append(score)   # 리스트에 추가
+실행 결과는 두 코드 모두 같습니다.
+[85, 92, 95, 88]
+
+
+다른 예시
+짝수만 저장하기
+numbers = [1, 2, 3, 4, 5, 6]
+
+even = [n for n in numbers if n % 2 == 0]
+
+print(even)
+출력
+[2, 4, 6]
+
+
+과제에서 리스트 컴프리헨션을 배우지 않았다면, 일반 for문과 if문으로 작성해도 됩니다. 오히려 초급 Python 과제에서는 일반 반복문을 사용하는 것이 더 이해하기 쉽고 좋은 답안인 경우도 많습니다.
+
+
+
+3번 프롬프트
+1.3 80점 이상만 새로운 리스트로 생성하시오. 1.4 평균 이상인 학생 수를 출력하시오.
+해당 2문제를 리스트 컴프리헨션을 쓰지 않은 답변도 보여줘.
+
+답변
+# 80점 이상인 점수를 저장할 빈 리스트를 만든다.
+high_scores = []
+
+# scores 리스트를 하나씩 확인한다.
+for score in scores:
+    # 점수가 80점 이상인지 확인한다.
+    if score >= 80:
+        # 80점 이상이면 high_scores 리스트에 추가한다.
+        high_scores.append(score)
+
+# 80점 이상인 점수 리스트를 출력한다.
+print("80점 이상:", high_scores)
+
+# 평균 이상인 학생 수를 저장할 변수를 0으로 초기화한다.
+count = 0
+
+# scores 리스트를 하나씩 확인한다.
+for score in scores:
+    # 점수가 평균 이상인지 확인한다.
+    if score >= average:
+        # 평균 이상이면 학생 수를 1 증가시킨다.
+        count += 1
+
+# 평균 이상인 학생 수를 출력한다.
+print("평균 이상인 학생 수:", count)
+
+
+
+문제 답
+scores =[78, 85, 92, 68, 95, 88, 74]
+
+# 1.1 평균 점수를 계산하시오.
+average_score = sum(scores) / len(scores)  # 리스트의 합을 구하고, len() 함수를 사용하여 리스트의 길이로 나누어 평균을 계산한다.
+print("평균 점수:", average_score)  # 계산된 평균 점수를 출력한다
+
+# 1.2 최고점과 최저점을 출력하시오.
+max_score = max(scores)  # max() 함수를 사용하여 리스트에서 최고점을 찾는다.
+min_score = min(scores)  # min() 함수를 사용하여 리스트에서 최저점을 찾는다.
+print("최고점:", max_score)  # 최고점을 출력한다.
+print("최저점:", min_score)  # 최저점을 출력한다.
+
+# 1.3 80점 이상만 새로운 리스트로 생성하시오.
+high_scores =[score forscore inscores ifscore >= 80]  # 리스트 컴프리헨션을 사용하여 80점 이상인 점수만 새로운 리스트로 생성한다.
+print("80점 이상 점수:", high_scores)  # 생성된 새로운 리스트를 출력한다.
+
+# 1.4 평균 이상인 학생 수를 출력하시오.
+above_average_count = len([score forscore inscores ifscore >=average_score])  # 리스트 컴프리헨션을 사용하여 평균 이상인 점수만 필터링하고, len() 함수를 사용하여 그 수를 계산한다.
+print("평균 이상인 학생 수:", above_average_count)  # 평균 이상인 학생 수를 출력한다.
+
+출력
+평균 점수: 82.85714285714286
+최고점: 95
+최저점: 68
+80점 이상 점수: [85, 92, 95, 88]
+평균 이상인 학생 수: 4
+
+해당 코드를 선택한 이유
+기존에 배운 for문 if문 활용한 답변은 코드가 너무 길고 더 간결하게 만들 수 있다면 간결하게 만드는 방안이 나음. 그리고 이왕 새로운 것을 배웠으니 활용해 보자는 느낌으로 리스트 컴프리헨션을 활용하는 것으로 코드를 선택.
+
+문제 2. NumPy와 Pandas 활용 
+다음 배열을 사용한다.
+import numpy as np
+data = np.array([
+    [85,90,88],
+    [70,80,75],
+    [95,98,100],
+    [60,72,68]
+])
+다음을 수행하시오.
+2.1 DataFrame으로 변환하시오.
+2.2 열 이름을 국어, 영어, 수학으로 지정하시오.
+2.3 학생별 평균을 새로운 열에 추가하시오.
+2.4 평균이 가장 높은 학생을 출력하시오.
+2.5 코드의 핵심 부분을 간단히 설명하시오.
+
+1번 프롬프트
+문제 2. NumPy와 Pandas 활용 
+다음 배열을 사용한다.
+import numpy as np
+data = np.array([
+    [85,90,88],
+    [70,80,75],
+    [95,98,100],
+    [60,72,68]
+])
+다음을 수행하시오.
+2.1 DataFrame으로 변환하시오.
+2.2 열 이름을 국어, 영어, 수학으로 지정하시오.
+2.3 학생별 평균을 새로운 열에 추가하시오.
+2.4 평균이 가장 높은 학생을 출력하시오.
+
+답변
+아래는 NumPy 배열을 Pandas DataFrame으로 변환하고 요구사항을 수행하는 코드입니다.
+import numpy as np
+import pandas as pd
+
+# 원본 배열
+data = np.array([
+    [85, 90, 88],
+    [70, 80, 75],
+    [95, 98, 100],
+    [60, 72, 68]
+])
+
+# 2.1, 2.2 DataFrame 변환 및 열 이름 지정
+df = pd.DataFrame(data, columns=['국어', '영어', '수학'])
+
+# 학생 번호 추가 (학생 구분용)
+df.index = ['학생1', '학생2', '학생3', '학생4']
+
+# 2.3 학생별 평균을 새로운 열로 추가
+df['평균'] = df.mean(axis=1)
+
+# DataFrame 출력
+print(df)
+
+# 2.4 평균이 가장 높은 학생 출력
+top_student = df['평균'].idxmax()
+top_score = df.loc[top_student, '평균']
+
+print("\n평균이 가장 높은 학생:")
+print(top_student, "평균:", top_score)
+실행 결과 예시
+      국어  영어   수학          평균
+학생1  85  90   88  87.666667
+학생2  70  80   75  75.000000
+학생3  95  98  100  97.666667
+학생4  60  72   68  66.666667
+
+평균이 가장 높은 학생:
+학생3 평균: 97.66666666666667
+설명:
+• pd.DataFrame(): NumPy 배열을 표 형태(DataFrame)로 변환
+• columns=['국어','영어','수학']: 열 이름 지정
+• df.mean(axis=1): 각 행(학생)의 평균 계산
+• idxmax(): 평균 값이 가장 큰 행의 이름(학생)을 반환합니다.
+
+프롬프트2
+코드의 핵심 부분을 간단히 설명하시오.
+
+답변
+핵심 부분 설명:
+• pd.DataFrame(data, columns=['국어','영어','수학'])→ NumPy 배열을 Pandas DataFrame으로 변환하고 열 이름을 지정한다.
+• df['평균'] = df.mean(axis=1)→ 각 학생(행)의 국어, 영어, 수학 점수 평균을 계산하여 새로운 평균열에 추가한다.
+• df['평균'].idxmax()→ 평균 값이 가장 큰 학생의 이름(인덱스)을 찾는다.
+• df.loc[top_student, '평균']→ 최고 평균을 받은 학생의 평균 점수를 출력한다.
+
+즉, 배열을 표 형태로 변환 → 학생별 평균 계산 → 평균이 가장 높은 학생 찾기의 과정이다.
+
+프롬프트3
+위 방법 말곤 다른 방법은 없는가?
+
+답변
+네, 있습니다. Pandas에서는 같은 결과를 여러 방식으로 구현할 수 있습니다. 이전 방법은 DataFrame의 행 인덱스를 학생명으로 지정하는 방식이었고, 아래는 학생 열을 추가하거나 NumPy 기능을 함께 사용하는 다른 방법입니다.
+방법 2: 학생 열을 직접 추가하는 방식
+import numpy as np
+import pandas as pd
+
+data = np.array([
+    [85, 90, 88],
+    [70, 80, 75],
+    [95, 98, 100],
+    [60, 72, 68]
+])
+
+# 2.1, 2.2 DataFrame 변환 및 열 이름 지정
+df = pd.DataFrame(data, columns=['국어', '영어', '수학'])
+
+# 학생 번호 열 추가
+df.insert(0, '학생', ['학생1', '학생2', '학생3', '학생4'])
+
+# 2.3 학생별 평균 추가
+df['평균'] = df[['국어', '영어', '수학']].mean(axis=1)
+
+# 2.4 평균이 가장 높은 학생 출력
+max_student = df.loc[df['평균'].idxmax()]
+
+print(df)
+print("\n평균이 가장 높은 학생")
+print(max_student)
+실행 결과
+    학생  국어  영어   수학          평균
+0  학생1  85  90   88  87.666667
+1  학생2  70  80   75  75.000000
+2  학생3  95  98  100  97.666667
+3  학생4  60  72   68  66.666667
+
+평균이 가장 높은 학생
+학생              학생3
+국어              95
+영어              98
+수학             100
+평균       97.666667
+Name: 2, dtype: object
+핵심 부분 설명
+• pd.DataFrame(data, columns=...)→ NumPy 배열을 Pandas DataFrame으로 변환하고 과목명을 지정한다.
+• df.insert(0, '학생', [...])→ DataFrame 첫 번째 열에 학생 이름을 추가한다.
+• df[['국어','영어','수학']].mean(axis=1)→ 세 과목 점수의 평균을 계산한다.
+• df.loc[df['평균'].idxmax()]→ 평균 값이 가장 큰 행(학생)의 모든 정보를 가져온다.
+
+이 방법은 실제 데이터 분석에서 학생 번호, 이름, ID 같은 식별자 열이 따로 있는 경우더 많이 사용하는 형태입니다. 이전 방법은 인덱스를 활용하는 간단한 형태이고, 이 방법은 데이터베이스 표 구조와 비슷해서 확장하기 쉽습니다.
+최종
+importnumpy asnp
+importpandas aspd
+
+# 데이터 생성
+data =np.array([
+[85, 90, 88],
+[70, 80, 75],
+[95, 98, 100],
+[60, 72, 68]
+])
+
+# 2.1, 2.2 DataFrame 변환 및 열 이름 지정
+df =pd.DataFrame(data, columns=['국어', '영어', '수학'])
+
+# 학생 이름 추가
+df['학생'] =['학생1', '학생2', '학생3', '학생4']
+
+# 2.3 학생별 평균 추가
+df['평균'] =df[['국어', '영어', '수학']].mean(axis=1)
+
+# 2.4 평균이 가장 높은 학생 출력
+best_student =df.loc[df['평균'].idxmax()]
+
+print(df)
+print("\n평균이 가장 높은 학생:")
+print(best_student)
+출력
+   국어  영어   수학   학생         평균
+0  85  90   88  학생1  87.666667
+1  70  80   75  학생2  75.000000
+2  95  98  100  학생3  97.666667
+3  60  72   68  학생4  66.666667
+
+평균이 가장 높은 학생:
+국어           95
+영어           98
+수학          100
+학생          학생3
+평균    97.666667
+Name: 2, dtype: object
+
+이유
+실제 데이터 분석에서 사용하는 DataFrame 구조와 더 비슷하고, 학생 이름·번호 같은 정보를 별도 열로 관리하기 때문에 이해하기 쉽기때문.
+
+문제 3. TensorFlow 기초
+다음 NumPy 배열을 TensorFlow Tensor로 변환하시오.
+array = np.array([
+    [2,4,6],
+    [8,10,12],
+    [14,16,18]
+])
+다음을 수행하시오.
+3.1 Tensor로 변환
+3.2 shape 출력
+3.3 dtype 출력
+3.4 모든 값에 10을 더한 결과 출력
+3.5 Tensor와 NumPy 배열의 차이를 3줄 이내로 설명하시오.
+
+프롬프트1
+문제 3. TensorFlow 기초
+다음 NumPy 배열을 TensorFlow Tensor로 변환하시오.
+array = np.array([
+    [2,4,6],
+    [8,10,12],
+    [14,16,18]
+])
+다음을 수행하시오.
+3.1 Tensor로 변환
+3.2 shape 출력
+3.3 dtype 출력
+3.4 모든 값에 10을 더한 결과 출력
+3.5 Tensor와 NumPy 배열의 차이를 3줄 이내로 설명하시오.
+
+답변
+import numpy as np
+import tensorflow as tf
+
+# NumPy 배열 생성
+array = np.array([
+    [2, 4, 6],
+    [8, 10, 12],
+    [14, 16, 18]
+])
+
+# 3.1 Tensor로 변환
+tensor = tf.constant(array)
+
+# 3.2 shape 출력
+print("Shape:", tensor.shape)
+
+# 3.3 dtype 출력
+print("Dtype:", tensor.dtype)
+
+# 3.4 모든 값에 10 더하기
+result = tensor + 10
+print("10을 더한 결과:")
+print(result)
+실행 결과 예시
+Shape: (3, 3)
+Dtype: <dtype: 'int64'>
+
+10을 더한 결과:
+tf.Tensor(
+[[12 14 16]
+ [18 20 22]
+ [24 26 28]], shape=(3, 3), dtype=int64)
+3.5 Tensor와 NumPy 배열의 차이 (3줄 이내)
+• NumPy 배열은 CPU 기반의 일반적인 수치 계산에 주로 사용된다.
+• TensorFlow Tensor는 딥러닝 모델 계산을 위해 GPU/TPU 연산을 지원한다.
+• Tensor는 자동 미분과 머신러닝 모델 학습에 필요한 기능을 제공한다.
+핵심 코드 설명
+• tf.constant(array): NumPy 배열을 TensorFlow Tensor로 변환한다.
+• tensor.shape: Tensor의 행과 열 크기를 확인한다.
+• tensor.dtype: Tensor 내부 데이터 타입을 확인한다.
+• tensor + 10: Tensor의 모든 원소에 같은 값을 더하는 연산을 수행한다.
+프롬프트2
+위 방법 말곤 다른 방법은 없는가?
+
+답변
+네, 있습니다. TensorFlow에서는 같은 작업을 여러 방식으로 수행할 수 있습니다. 이전 방법은 tf.constant()를 이용하는 가장 기본적인 방법이고, 아래처럼 다른 방식도 가능합니다.
+방법 2: tf.convert_to_tensor()사용 (추천)
+import numpy as np
+import tensorflow as tf
+
+# NumPy 배열 생성
+array = np.array([
+    [2, 4, 6],
+    [8, 10, 12],
+    [14, 16, 18]
+])
+
+# 3.1 Tensor로 변환
+tensor = tf.convert_to_tensor(array)
+
+# 3.2 shape 출력
+print("Shape:", tensor.shape)
+
+# 3.3 dtype 출력
+print("Dtype:", tensor.dtype)
+
+# 3.4 모든 값에 10 더하기
+result = tf.add(tensor, 10)
+
+print("10을 더한 결과:")
+print(result)
+결과
+Shape: (3, 3)
+Dtype: <dtype: 'int64'>
+
+10을 더한 결과:
+tf.Tensor(
+[[12 14 16]
+ [18 20 22]
+ [24 26 28]], shape=(3, 3), dtype=int64)
+차이점
+
+방법
+특징
+tf.constant(array)
+Tensor를 만드는 가장 기본적인 방법, 변경하지 않는 상수 Tensor 생성
+tf.convert_to_tensor(array)
+NumPy 배열, Python 리스트 등 다양한 데이터를 Tensor로 변환할 때 사용
+tf.add(tensor, 10)
+Tensor 연산을 TensorFlow 함수 형태로 명확하게 표현
+
+과제 제출용 추천 코드
+tf.convert_to_tensor()방식이 조금 더 범용적이라 추천합니다.
+이유:
+• NumPy → Tensor 변환 목적이 코드에서 더 명확함
+• TensorFlow 공식 API에서 자주 사용되는 변환 방식
+• 이후 머신러닝/딥러닝 코드와 연결하기 쉬움
+프롬프트3
+위 내용 중 더 좋은 방법은 무엇인가?
+
+답변
+
+방법
+장점
+단점
+tf.constant(array)
+가장 간단하고 Tensor 생성 목적이 명확함
+NumPy 변환이라는 의미가 조금 약함
+tf.convert_to_tensor(array)
+NumPy 배열을 Tensor로 변환한다는 목적이 명확하고 다양한 입력 지원
+기능이 조금 더 일반적임
+tf.add(tensor, 10)
+TensorFlow 연산 방식으로 표현 가능
+단순 덧셈에는 tensor + 10보다 코드가 길어짐
+
+따라서 문제의 요구사항(NumPy 배열 → Tensor 변환)에 가장 잘 맞는 코드는 아래 방식입니다.
+import numpy as np
+import tensorflow as tf
+
+# NumPy 배열 생성
+array = np.array([
+    [2, 4, 6],
+    [8, 10, 12],
+    [14, 16, 18]
+])
+
+# 3.1 Tensor로 변환
+tensor = tf.convert_to_tensor(array)
+
+# 3.2 shape 출력
+print("Shape:", tensor.shape)
+
+# 3.3 dtype 출력
+print("Dtype:", tensor.dtype)
+
+# 3.4 모든 값에 10 더하기
+result = tensor + 10
+
+print("10을 더한 결과:")
+print(result)
+핵심 설명
+• tf.convert_to_tensor(array): NumPy 배열을 TensorFlow Tensor 객체로 변환한다.
+• tensor.shape: Tensor의 크기(행, 열)를 확인한다.
+• tensor.dtype: Tensor 데이터 타입을 확인한다.
+• tensor + 10: Tensor의 모든 원소에 10을 더하는 연산을 수행한다.
+최종 선택:✅ tf.convert_to_tensor()tensor + 10방식 추천→ 코드가 간결하고, 문제 의도(NumPy → Tensor 변환)를 가장 잘 보여주며, 초급 TensorFlow 과제 제출용으로 적합합니다.
+
+최종 답
+importnumpy asnp
+importtensorflow astf
+
+# NumPy 배열 생성
+array =np.array([
+[2, 4, 6],
+[8, 10, 12],
+[14, 16, 18]
+])
+
+# 3.1 Tensor로 변환
+tensor =tf.convert_to_tensor(array)
+
+# 3.2 shape 출력
+print("Shape:", tensor.shape)
+
+# 3.3 dtype 출력
+print("Dtype:", tensor.dtype)
+
+# 3.4 모든 값에 10을 더한 결과 출력
+result =tensor + 10
+
+print("10을 더한 결과:")
+print(result)
+
+이유
+코드가 간결하고 TensorFlow 과제 제출용으로 적합. 일단 하면서 알게된건 현재 파이썬 3.14버전에선 TensorFlow가 혼환되지 않는다는 것. 그래서 가상환경을 만들어서 버전을 낮춰야만 했다.
+
+문제 4. 선형 회귀
+다음 데이터를 이용하여 선형 회귀 모델을 작성하시오.
+x_train = np.array([1,2,3,4,5],dtype=np.float32)
+y_train = np.array([3,6,9,12,15],dtype=np.float32)
+요구사항
+* Sequential 모델 사용
+* Dense(1)
+* Optimizer : Adam
+* Loss : MSE
+* Epoch : 300
+그리고
+x_test=[6,7,8]
+에 대한 예측값을 출력하시오.
+추가로
+학습 횟수를 300에서 20으로 줄이면 어떤 변화가 예상되는지 설명하시오.
+
+프롬프트1
+문제 4. 선형 회귀
+다음 데이터를 이용하여 선형 회귀 모델을 작성하시오.
+x_train = np.array([1,2,3,4,5],dtype=np.float32)
+y_train = np.array([3,6,9,12,15],dtype=np.float32)
+요구사항
+* Sequential 모델 사용
+* Dense(1)
+* Optimizer : Adam
+* Loss : MSE
+* Epoch : 300
+그리고
+x_test=[6,7,8]
+에 대한 예측값을 출력하시오.
+
+답변
+아래는 요구사항을 모두 만족하는 TensorFlow(Keras) 코드입니다.
+import numpy as np
+import tensorflow as tf
+
+# 학습 데이터
+x_train = np.array([1, 2, 3, 4, 5], dtype=np.float32)
+y_train = np.array([3, 6, 9, 12, 15], dtype=np.float32)
+
+# Sequential 모델 생성
+model = tf.keras.Sequential([
+    tf.keras.layers.Dense(1, input_shape=(1,))
+])
+
+# 모델 컴파일
+model.compile(
+    optimizer='adam',
+    loss='mse'
+)
+
+# 모델 학습
+model.fit(x_train, y_train, epochs=300, verbose=0)
+
+# 테스트 데이터
+x_test = np.array([6, 7, 8], dtype=np.float32)
+
+# 예측
+y_pred = model.predict(x_test)
+
+# 결과 출력
+print("예측값")
+for x, y in zip(x_test, y_pred):
+    print(f"x = {x:.0f} -> y = {y[0]:.2f}")
+실행 결과(예시)
+학습 과정에 따라 약간의 오차는 있지만 다음과 비슷하게 출력됩니다.
+예측값
+x = 6 -> y = 17.99
+x = 7 -> y = 20.99
+x = 8 -> y = 23.99
+또는
+예측값
+x = 6 -> y = 18.00
+x = 7 -> y = 21.00
+x = 8 -> y = 24.00
+문제에서 요구한 사항 체크
+• ✅ Sequential모델 사용
+• ✅ Dense(1)
+• ✅ Optimizer : Adam
+• ✅ Loss : MSE
+• ✅ Epoch : 300
+• ✅ x_test = [6,7,8]예측값 출력
+이 문제는 직선 y=3xy = 3xy=3x을 학습하는 선형 회귀 문제이므로 최종적으로 18, 21, 24에 매우 가까운 값이 예측됩니다.
+
+프롬프트2
+학습 횟수를 300에서 20으로 줄이면 어떤 변화가 예상되는지 설명하시오.
+
+답변
+학습 횟수(Epoch)를 300 → 20으로 줄이면 모델이 데이터를 충분히 학습하지 못할 가능성이 높습니다.
+예상되는 변화
+1. 손실(Loss)이 더 크게 남아있다.
+• 300번 학습하면 손실이 거의 0에 가까워집니다.
+• 20번만 학습하면 손실이 충분히 감소하지 않아 더 큰 값을 가질 가능성이 있습니다.
+예측값의 오차가 커진다.
+실제 값은 다음과 같습니다.
+x = 6 → 18
+x = 7 → 21
+x = 8 → 24
+Epoch가 20이면 예를 들어
+x = 6 → 16.8
+x = 7 → 19.6
+x = 8 → 22.4
+처럼 실제 값과 차이가 날 수 있습니다. (정확한 값은 초기 가중치에 따라 달라집니다.)
+모델이 충분히 수렴하지 않는다.
+• 이 데이터는 y = 3x라는 매우 단순한 관계이므로 시간이 지나면 쉽게 학습됩니다.
+• 하지만 20번만 학습하면 아직 최적의 가중치와 편향에 도달하지 못해 미학습(Underfitting)상태가 될 수 있습니다.
+결론
+학습 횟수를 300에서 20으로 줄이면 모델의 학습이 충분하지 않아 손실값이 더 크고, 예측값도 실제 값(18, 21, 24)에서 더 벗어날 가능성이 있습니다.즉, 학습 정확도가 낮아질 것으로 예상됩니다.
+최종답
+importnumpy asnp
+importtensorflow astf
+
+# 학습 데이터
+x_train =np.array([1, 2, 3, 4, 5], dtype=np.float32)
+y_train =np.array([3, 6, 9, 12, 15], dtype=np.float32)
+
+# Sequential 모델 생성
+model =tf.keras.Sequential([
+tf.keras.layers.Dense(1, input_shape=(1,))
+])
+
+# 모델 컴파일
+model.compile(
+    optimizer='adam',
+    loss='mse'
+)
+
+# 모델 학습
+model.fit(x_train, y_train, epochs=300, verbose=0)
+
+# 테스트 데이터
+x_test =np.array([6, 7, 8], dtype=np.float32)
+
+# 예측
+y_pred =model.predict(x_test)
+
+# 결과 출력
+print("예측값")
+forx, y in zip(x_test, y_pred):
+    print(f"x = {x:.0f}-> y = {y[0]:.2f}")
+
+학습 횟수를 300에서 20으로 줄이면 모델의 학습이 충분하지 않아 손실값이 더 크고, 예측값도 실제 값(18, 21, 24)에서 더 벗어날 가능성이 있습니다.즉, 학습 정확도가 낮아질 것으로 예상됩니다.
+
+이유
+
+
+
+문제 5. CNN 모델 수정하기
+다음 CNN 모델을 보고 답하시오.
+Conv2D(32)
+MaxPooling
+Conv2D(64)
+Flatten
+Dense(128)
+Dense(10)
+5.1 Conv2D 역할
+5.2 MaxPooling 역할
+5.3 Flatten 역할
+5.4 Dense 역할
+5.5 Softmax를 사용하는 이유
+
+프롬프트1
+문제 5. CNN 모델 수정하기
+다음 CNN 모델을 보고 답하시오.
+Conv2D(32)
+MaxPooling
+Conv2D(64)
+Flatten
+Dense(128)
+Dense(10)
+5.1 Conv2D 역할
+5.2 MaxPooling 역할
+5.3 Flatten 역할
+5.4 Dense 역할
+5.5 Softmax를 사용하는 이유
+
+답변
+5.1 Conv2D 역할
+• Conv2D(합성곱 층)은 이미지의 특징을 추출하는 역할을 합니다.
+• 필터(커널)를 이용하여 모서리, 선, 질감, 모양등의 특징을 학습합니다.
+• 앞쪽 층에서는 단순한 특징을, 뒤쪽 층에서는 더 복잡한 특징을 추출합니다.
+
+
+5.2 MaxPooling 역할
+• MaxPooling은 특징 맵의 크기를 줄이는 역할을 합니다.
+• 일정 영역(예: 2×2)에서 가장 큰 값만 선택하여 출력합니다.
+• 이를 통해
+• 연산량을 감소시키고,
+• 중요한 특징을 유지하며,
+• 과적합(Overfitting)을 줄이는 효과가 있습니다.
+
+
+5.3 Flatten 역할
+• Flatten은 2차원(또는 3차원) 특징 맵을 1차원 벡터로 변환하는 역할을 합니다.
+• CNN에서 추출한 특징을 Dense(완전 연결층)에 입력할 수 있도록 변환합니다.
+예를 들어,
+7 × 7 × 64
+를
+3136
+개의 1차원 데이터로 변환합니다.
+
+
+5.4 Dense 역할
+• Dense(완전 연결층)는 앞에서 추출한 특징을 이용하여 최종 결과를 예측하는 역할을 합니다.
+• 모든 입력 노드와 모든 출력 노드가 연결되어 있습니다.
+• Dense(128)은 특징을 학습하는 은닉층이고,
+• Dense(10)은 10개의 클래스를 예측하는 출력층입니다.
+
+
+5.5 Softmax를 사용하는 이유
+• Softmax는 출력값을 0~1 사이의 확률로 변환합니다.
+• 모든 클래스의 확률 합이 1이 되도록 만들어 줍니다.
+• 따라서 여러 클래스 중 가장 확률이 높은 클래스를 최종 예측 결과로 선택할 수 있습니다.
+예를 들어 출력이
+[2.1, 0.5, 3.2]
+였다면 Softmax를 적용하면
+[0.24, 0.05, 0.71]
+처럼 확률로 변환되어 3번째 클래스(71%)를 예측하게 됩니다.
+
+프롬프트2
+좀 더 보충 설명
+
+답변
+5.1 Conv2D 역할
+Conv2D(Convolutional 2D)는 이미지에서 중요한 특징(Feature)을 추출하는 층입니다.
+• 여러 개의 필터(Filter, Kernel)를 이미지 위에서 조금씩 이동시키며 연산합니다.
+• 각 필터는 특정한 특징을 찾아냅니다.
+• 선(Line)
+• 모서리(Edge)
+• 곡선(Curve)
+• 질감(Texture)
+• 물체의 형태(Shape)
+학습이 진행될수록 필터의 값이 자동으로 변경되어 더 중요한 특징을 잘 추출하게 됩니다.
+예를 들어 고양이 사진을 학습한다면
+• 첫 번째 Conv2D → 눈, 귀의 경계선
+• 두 번째 Conv2D → 얼굴 모양, 귀 모양
+• 마지막에는 "고양이"라는 특징을 인식할 수 있게 됩니다.
+Conv2D(32)는 32개의 필터를 사용하여 32개의 특징 맵(Feature Map)을 생성한다는 의미입니다.
+
+
+5.2 MaxPooling 역할
+MaxPooling은 특징 맵의 크기를 줄이는(다운샘플링) 층입니다.
+예를 들어
+1 4
+3 2
+2×2 영역에서 가장 큰 값인 4만 남깁니다.
+즉,
+1 4
+3 2
+↓
+4
+이렇게 중요한 정보만 유지합니다.
+사용하는 이유
+• 데이터 크기를 줄여 계산 속도를 높입니다.
+• 메모리 사용량을 줄입니다.
+• 작은 위치 변화에도 같은 특징을 인식할 수 있습니다.
+• 과적합(Overfitting)을 줄이는 데 도움이 됩니다.
+
+
+5.3 Flatten 역할
+Conv2D와 MaxPooling을 거치면 데이터는 다음과 같은 형태가 됩니다.
+7 × 7 × 64
+이 데이터는 3차원입니다.
+하지만 Dense층은 1차원 데이터만 입력받을 수 있습니다.
+그래서 Flatten이
+7 × 7 × 64
+↓
+3136
+으로 한 줄로 펼쳐 줍니다.
+즉,
+Flatten은 이미지의 특징 정보를 잃지 않으면서 1차원 벡터로 변환하는 역할을 합니다.
+
+
+5.4 Dense 역할
+Dense는 완전 연결층(Fully Connected Layer)입니다.
+모든 뉴런이 이전 층의 모든 뉴런과 연결됩니다.
+입력층
+ ● ● ● ●
+
+ ↓↓↓↓
+
+Dense층
+ ● ● ● ● ●
+Dense층에서는 Conv2D가 추출한 특징을 이용하여
+• 어떤 숫자인지
+• 어떤 동물인지
+• 어떤 물체인지
+최종적으로 분류합니다.
+예를 들어
+Dense(128)
+은 128개의 뉴런이 있는 은닉층입니다.
+여기서 특징들을 조합하여 중요한 정보를 학습합니다.
+마지막
+Dense(10)
+은
+0
+1
+2
+...
+9
+총 10개의 숫자를 분류하기 위한 출력층입니다.
+
+
+5.5 Softmax를 사용하는 이유
+Dense(10)의 출력은 처음에는 단순한 점수(Score)입니다.
+예를 들어
+[-2.3, 1.2, 4.5, 0.3, ...]
+이 값만으로는 어느 클래스일 가능성이 높은지 직관적으로 알기 어렵습니다.
+Softmax를 적용하면
+[0.001,
+ 0.03,
+ 0.91,
+ 0.02,
+ ...]
+처럼 0~1 사이의 확률로 변환됩니다.
+그리고
+모든 확률의 합 = 1
+이 되므로 가장 큰 확률을 가진 클래스를 쉽게 선택할 수 있습니다.
+예를 들어
+
+클래스
+확률
+0
+0.01
+1
+0.03
+2
+0.91
+3
+0.05
+
+이라면 클래스 2(91%)가 최종 예측 결과입니다.
+Softmax를 사용하는 이유
+• 출력값을 확률로 변환한다.
+• 모든 클래스의 확률 합이 1이 된다.
+• 가장 높은 확률을 가진 클래스를 최종 예측으로 선택할 수 있다.
+• 다중 분류(Multi-class Classification) 문제에서 널리 사용된다.
+
+
+전체 모델의 흐름
+입력 이미지
+      │
+      ▼
+Conv2D(32)     → 선, 모서리 등의 특징 추출
+      │
+      ▼
+MaxPooling     → 특징은 유지하면서 크기 축소
+      │
+      ▼
+Conv2D(64)     → 더 복잡한 특징 추출
+      │
+      ▼
+Flatten        → 3차원 데이터를 1차원으로 변환
+      │
+      ▼
+Dense(128)     → 특징을 종합하여 학습
+      │
+      ▼
+Dense(10)+Softmax → 10개 클래스의 확률을 계산하여 최종 분류
+이렇게 보면 Conv2D는 특징을 추출하고, MaxPooling은 중요한 특징만 남기며 크기를 줄이고, Flatten은 Dense층에 입력할 수 있도록 데이터를 1차원으로 변환하고, Dense와 Softmax는 최종 분류를 수행한다고 이해하면 됩니다.
+
+프롬프트3
+총 정리해서 보기 편한 내용으로
+
+답변
+CNN 모델 총정리
+입력 이미지
+     │
+     ▼
+Conv2D(32)
+     │
+     ▼
+MaxPooling
+     │
+     ▼
+Conv2D(64)
+     │
+     ▼
+Flatten
+     │
+     ▼
+Dense(128)
+     │
+     ▼
+Dense(10) + Softmax
+     │
+     ▼
+최종 분류 결과
+
+구성 요소
+역할
+핵심 내용
+Conv2D
+이미지의 특징 추출
+필터(Filter)를 이용해 선, 모서리, 질감, 모양 등의 특징을 학습한다. 층이 깊어질수록 더 복잡한 특징을 추출한다. Conv2D(32)는 32개의 필터를 사용한다.
+MaxPooling
+특징 맵 크기 축소
+일정 영역에서 가장 큰 값만 선택하여 출력한다. 계산량 감소, 학습 속도 향상, 과적합 방지, 중요한 특징 유지에 도움이 된다.
+Flatten
+1차원 변환
+Conv2D와 MaxPooling을 거친 2차원(또는 3차원) 데이터를 1차원 벡터로 변환하여 Dense층에 입력할 수 있도록 한다.
+Dense
+최종 분류(완전 연결층)
+이전 층의 모든 뉴런과 연결되어 추출한 특징을 종합하여 결과를 예측한다. Dense(128)은 특징을 학습하는 은닉층, Dense(10)은 10개의 클래스를 출력하는 출력층이다.
+Softmax
+확률 계산
+출력값을 0~1 사이의 확률로 변환하며, 모든 확률의 합이 1이 되도록 한다. 가장 높은 확률의 클래스를 최종 결과로 선택한다.
+
+
+
+전체 동작 과정
+① Conv2D
+• 필터를 이용해 이미지에서 특징을 추출한다.
+• 예) 선 → 모서리 → 눈 → 얼굴 → 사람
+⬇
+② MaxPooling
+• 중요한 특징만 남기고 크기를 줄인다.
+• 계산 속도를 높이고 과적합을 줄인다.
+⬇
+③ Conv2D
+• 앞에서 추출한 특징을 이용해 더 복잡한 특징을 학습한다.
+⬇
+④ Flatten
+• 2차원(또는 3차원) 데이터를 1차원으로 펼친다.
+예)
+7 × 7 × 64
+    ↓
+  3136
+⬇
+⑤ Dense
+• 추출된 특징을 종합하여 어떤 클래스인지 판단한다.
+• Dense(128)→ 특징 학습
+• Dense(10)→ 10개 클래스의 점수 출력
+⬇
+⑥ Softmax
+• 점수를 확률로 변환한다.
+예)
+Dense 출력
+[2.1, 0.5, 3.2]
+
+        ↓
+
+Softmax
+[0.24, 0.05, 0.71]
+가장 높은 확률인 0.71(71%)을 가진 클래스를 최종 예측으로 선택한다.
+
+
+핵심 키워드 한 줄 암기
+• Conv2D특징 추출
+• MaxPooling크기 축소 + 중요한 특징 유지
+• Flatten1차원 변환
+• Dense최종 분류
+• Softmax확률 계산 및 최종 클래스 선택
+
+최종답
+Conv2D: 필터를 이용하여 이미지의 특징(선, 모서리, 질감, 모양 등)을 추출하는 층이다.
+MaxPooling: 가장 큰 값만 선택하여 특징 맵의 크기를 줄이고 계산량을 감소시키며 중요한 특징을 유지한다.
+Flatten: 2차원(또는 3차원) 특징 맵을 1차원 벡터로 변환하여 Dense층에 입력할 수 있도록 한다.
+Dense: 추출한 특징을 이용하여 최종 분류를 수행하는 완전 연결층이다.
+Softmax: 출력값을 각 클래스의 확률(합이 1)로 변환하여 가장 높은 확률의 클래스를 최종 예측으로 선택한다.
+
+이유
+너무 긴 설명은 일단 외우기도 이해하기도 힘들다. 그리고 시험 답변으로 내기엔 짧은 답이 나은 거 같다. 일단 아직 모르겠지만 더 공부해야할 내용인 듯 하다.
+
+문제 6. AI 코드 검토
+AI가 다음 코드를 생성하였다.
+numbers = [1,2,3,4,5]
+print(sum(numbers)/len(numbers))
+print(numbers.max())
+6.1 오류가 발생하는 부분을 찾으시오.
+6.2 올바르게 수정하시오.
+6.3 오류가 발생한 이유를 설명하시오.
+
+프롬프트1
+문제 6. AI 코드 검토
+AI가 다음 코드를 생성하였다.
+numbers = [1,2,3,4,5]
+print(sum(numbers)/len(numbers))
+print(numbers.max())
+6.1 오류가 발생하는 부분을 찾으시오.
+
+답변
+문제 6. AI 코드 검토
+주어진 코드
+numbers = [1,2,3,4,5]
+print(sum(numbers)/len(numbers))
+print(numbers.max())
+
+
+6.1 오류가 발생하는 부분을 찾으시오.
+오류가 발생하는 부분은 다음 코드입니다.
+print(numbers.max())
+실행하면 다음과 같은 오류가 발생합니다.
+AttributeError: 'list' object has no attribute 'max'
+
+프롬프트2
+6.2 올바르게 수정하시오.
+
+답변
+6.2 올바르게 수정하시오.
+방법 1 (권장)
+numbers = [1,2,3,4,5]
+
+print(sum(numbers) / len(numbers))
+print(max(numbers))
+실행 결과
+3.0
+5
+
+
+방법 2 (NumPy를 사용하는 경우)
+import numpy as np
+
+numbers = np.array([1,2,3,4,5])
+
+print(sum(numbers) / len(numbers))
+print(numbers.max())
+
+프롬프트3
+6.3 오류가 발생한 이유를 설명하시오.
+
+답변
+6.3 오류가 발생한 이유를 설명하시오.
+• numbers는 파이썬의 리스트(list)자료형입니다.
+• 리스트에는 .max()메서드가 존재하지 않습니다.
+• 따라서 numbers.max()를 호출하면 AttributeError가 발생합니다.
+• 리스트에서 최댓값을 구할 때는 **내장 함수 max()**를 사용해야 합니다.
+• 반면 **NumPy 배열(numpy.ndarray)**은 .max()메서드를 제공하므로 사용할 수 있습니다.
+
+
+핵심 정리
+
+코드
+가능 여부
+이유
+max(numbers)
+✅ 가능
+파이썬 내장 함수로 리스트의 최댓값을 구함
+numbers.max()
+❌ 불가능
+list에는 max()메서드가 없음
+np.array(numbers).max()
+✅ 가능
+NumPy 배열은 max()메서드를 제공함
+
+
+최종답
+6.1
+오류 발생 부분: print(numbers.max())
+
+6.2
+numbers =[1,2,3,4,5]
+
+print(sum(numbers) / len(numbers))
+print(max(numbers))
+
+6.3
+numbers는 리스트(list) 자료형이므로 .max() 메서드를 지원하지 않는다.
+리스트의 최댓값은 내장 함수 max()를 사용해야 한다.
+따라서 numbers.max() 대신 max(numbers)로 수정해야 한다.
+
+느낀점
+해당 문제에서 무언가 해야할 점을 못 찾겠다. 애초에 간단한 오류 해결 문제 였어서. 굳이 느낀점을 찾자면 vs code에서 바로바로 오류 확인되고 고쳐지는 기능이 너무 신기하다.
+
+문제 7. AI 결과 검증
+AI에게 다음과 같이 질문하였다.
+"MNIST 분류 모델을 작성해줘."
+생성된 코드에서 다음 내용을 찾아 설명하시오.
+7.1 데이터 전처리 부분
+7.2 모델 생성 부분
+7.3 학습 부분
+7.4 평가 부분
+7.5 예측 부분
+
+프롬프트1
+문제 7. AI 결과 검증
+AI에게 다음과 같이 질문하였다.
+"MNIST 분류 모델을 작성해줘."
+생성된 코드에서 다음 내용을 찾아 설명하시오.
+7.1 데이터 전처리 부분
+7.2 모델 생성 부분
+7.3 학습 부분
+7.4 평가 부분
+7.5 예측 부분
+
+답변
+문제 7. AI 결과 검증
+MNIST 분류 모델은 일반적으로 다음과 같은 구조로 작성됩니다.
+# ① 데이터 불러오기
+from tensorflow.keras.datasets import mnist
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense, Flatten
+
+(x_train, y_train), (x_test, y_test) = mnist.load_data()
+
+# ② 데이터 전처리
+x_train = x_train / 255.0
+x_test = x_test / 255.0
+
+# ③ 모델 생성
+model = Sequential([
+    Flatten(input_shape=(28, 28)),
+    Dense(128, activation='relu'),
+    Dense(10, activation='softmax')
+])
+
+# ④ 컴파일
+model.compile(optimizer='adam',
+              loss='sparse_categorical_crossentropy',
+              metrics=['accuracy'])
+
+# ⑤ 학습
+model.fit(x_train, y_train, epochs=5)
+
+# ⑥ 평가
+model.evaluate(x_test, y_test)
+
+# ⑦ 예측
+pred = model.predict(x_test)
+
+
+7.1 데이터 전처리 부분
+x_train = x_train / 255.0
+x_test = x_test / 255.0
+설명
+• MNIST 이미지의 픽셀 값은 0~255이다.
+• 이를 0~1 사이의 값으로 정규화(Normalization)한다.
+• 학습 속도를 높이고 모델의 성능을 향상시키기 위해 수행한다.
+
+
+7.2 모델 생성 부분
+model = Sequential([
+    Flatten(input_shape=(28,28)),
+    Dense(128, activation='relu'),
+    Dense(10, activation='softmax')
+])
+설명
+• Sequential: 층을 순서대로 쌓는 모델이다.
+• Flatten: 28×28 이미지를 784개의 1차원 데이터로 변환한다.
+• Dense(128, relu): 특징을 학습하는 은닉층이다.
+• Dense(10, softmax): 숫자(0~9)를 분류하는 출력층이다.
+
+
+7.3 학습 부분
+model.fit(x_train, y_train, epochs=5)
+설명
+• fit()은 모델을 학습시키는 함수이다.
+• x_train은 입력 데이터, y_train은 정답(Label)이다.
+• epochs=5는 전체 학습 데이터를 5번 반복하여 학습한다는 의미이다.
+
+
+7.4 평가 부분
+model.evaluate(x_test, y_test)
+설명
+• 학습이 끝난 모델의 성능을 평가한다.
+• 학습에 사용하지 않은 테스트 데이터로 정확도와 손실값을 측정한다.
+• 이를 통해 모델의 일반화 성능을 확인할 수 있다.
+
+
+7.5 예측 부분
+pred = model.predict(x_test)
+설명
+• 새로운 데이터(x_test)에 대해 모델이 결과를 예측한다.
+• 각 이미지에 대해 10개 클래스(0~9)의 확률을 출력한다.
+• 가장 높은 확률을 가진 숫자가 최종 예측 결과가 된다.
+예를 들어
+[0.01, 0.02, 0.93, 0.01, 0.01, 0.00, 0.00, 0.01, 0.00, 0.01]
+이라면 확률이 가장 높은 2(93%)를 예측한 것이다.
+
+프롬프트2
+내가 보기 편하게 간략하게 정리 해줘
+
+
+
+답변
+시험 답안 요약
+
+항목
+코드
+설명
+7.1 데이터 전처리
+x_train = x_train / 255.0x_test = x_test / 255.0
+픽셀 값을 0~1로 정규화하여 학습 성능을 향상시킨다.
+7.2 모델 생성
+Sequential, Flatten, Dense
+Sequential로 모델을 만들고, Flatten으로 1차원 변환 후 Dense층으로 특징을 학습하고 최종 분류한다.
+7.3 학습
+model.fit(x_train, y_train, epochs=5)
+학습 데이터를 이용하여 모델을 반복 학습시킨다.
+7.4 평가
+model.evaluate(x_test, y_test)
+테스트 데이터로 모델의 손실값과 정확도를 평가한다.
+7.5 예측
+model.predict(x_test)
+새로운 데이터의 클래스를 예측하며, 각 클래스의 확률을 출력하고 가장 높은 확률의 클래스를 최종 결과로 선택한다.
+
+
+프롬프트3
+최종적으로 문제에 대한 답을 말하자면?
+
+답변
+7.1 데이터 전처리 부분
+• x_train = x_train / 255.0
+• x_test = x_test / 255.0
+• 설명:이미지의 픽셀 값을 0~255에서 0~1 사이로 정규화하여 학습 성능을 향상시킨다.
+
+
+7.2 모델 생성 부분
+• model = Sequential([...])
+• Flatten(input_shape=(28,28))
+• Dense(128, activation='relu')
+• Dense(10, activation='softmax')
+• 설명:Sequential 모델을 생성하고, Flatten으로 1차원으로 변환한 후 Dense층을 이용하여 특징을 학습하고 최종 분류한다.
+
+
+7.3 학습 부분
+• model.fit(x_train, y_train, epochs=5)
+• 설명:학습 데이터를 이용하여 모델을 반복 학습시킨다.
+
+
+7.4 평가 부분
+• model.evaluate(x_test, y_test)
+• 설명:테스트 데이터를 이용하여 모델의 손실값(Loss)과 정확도(Accuracy)를 평가한다.
+
+
+7.5 예측 부분
+• model.predict(x_test)
+• 설명:새로운 데이터에 대한 예측을 수행하며, 각 클래스의 확률을 출력하고 가장 높은 확률을 가진 클래스를 최종 결과로 선택한다.
+
+최종답
+# ① 데이터 불러오기
+fromtensorflow.keras.datasets importmnist
+fromtensorflow.keras.models importSequential
+fromtensorflow.keras.layers importDense, Flatten
+
+(x_train, y_train), (x_test, y_test) =mnist.load_data()
+
+# ② 데이터 전처리
+x_train =x_train / 255.0
+x_test =x_test / 255.0
+
+# ③ 모델 생성
+model =Sequential([
+Flatten(input_shape=(28, 28)),
+Dense(128, activation='relu'),
+Dense(10, activation='softmax')
+])
+
+# ④ 컴파일
+model.compile(optimizer='adam',
+              loss='sparse_categorical_crossentropy',
+              metrics=['accuracy'])
+
+# ⑤ 학습
+model.fit(x_train, y_train, epochs=5)
+
+# ⑥ 평가
+model.evaluate(x_test, y_test)
+
+# ⑦ 예측
+pred =model.predict(x_test)
+
+항목
+코드
+설명
+7.1 데이터 전처리
+x_train = x_train / 255.0x_test = x_test / 255.0
+픽셀 값을 0~1로 정규화하여 학습 성능을 향상시킨다.
+7.2 모델 생성
+Sequential, Flatten, Dense
+Sequential로 모델을 만들고, Flatten으로 1차원 변환 후 Dense층으로 특징을 학습하고 최종 분류한다.
+7.3 학습
+model.fit(x_train, y_train, epochs=5)
+학습 데이터를 이용하여 모델을 반복 학습시킨다.
+7.4 평가
+model.evaluate(x_test, y_test)
+테스트 데이터로 모델의 손실값과 정확도를 평가한다.
+7.5 예측
+model.predict(x_test)
+새로운 데이터의 클래스를 예측하며, 각 클래스의 확률을 출력하고 가장 높은 확률의 클래스를 최종 결과로 선택한다.
+
+
+느낀점
+왜 AI를 활용하라는 말이 계속 나오는지 실감 중이다.
+
+
+문제 8. 이론 문제
+다음을 그림과 함께 설명하시오.
+* 손실 함수(Loss Function)
+* 옵티마이저(Optimizer)
+* 활성 함수(Activation Function)
+* Softmax
+* ReLU
+* Epoch
+
+프롬프트1
+문제 8. 이론 문제
+다음을 그림과 함께 설명하시오.
+* 손실 함수(Loss Function)
+* 옵티마이저(Optimizer)
+* 활성 함수(Activation Function)
+* Softmax
+* ReLU
+* Epoch
+
+답변
+1. 손실 함수 (Loss Function)
+의미
+• 모델의 예측값과 실제값의 차이(오차)를 계산하는 함수이다.
+• 손실값이 작을수록모델의 성능이 좋은 것이다.
+• 학습의 목표는 손실값을 최소화하는 것이다.
+그림
+입력 데이터
+     │
+     ▼
+   AI 모델
+     │
+     ▼
+예측값(8) ───────┐
+                 │ 비교
+실제값(10) ──────┘
+        │
+        ▼
+  Loss = 오차 계산
+대표적인 손실 함수
+• MSE : 회귀 문제
+• Cross Entropy : 분류 문제
+
+
+2. 옵티마이저 (Optimizer)
+의미
+• 손실 함수의 값을 최소화하도록 가중치와 편향을 수정하는 알고리즘이다.
+• 모델이 더 정확한 예측을 하도록 학습시킨다.
+그림
+현재 가중치
+     │
+     ▼
+손실 계산
+     │
+     ▼
+Optimizer
+     │
+가중치 수정
+     │
+     ▼
+손실 감소
+대표적인 Optimizer
+• SGD
+• Adam(가장 많이 사용)
+• RMSprop
+
+
+3. 활성 함수 (Activation Function)
+의미
+• 뉴런의 출력값을 변환하는 함수이다.
+• 신경망에 비선형성(Non-linearity)을 추가하여 복잡한 문제를 학습할 수 있게 한다.
+그림
+입력
+ │
+ ▼
+가중치 계산
+ │
+ ▼
+Activation Function
+ │
+ ▼
+출력
+대표적인 활성 함수
+• ReLU
+• Sigmoid
+• Tanh
+• Softmax
+
+
+4. Softmax
+의미
+• 출력값을 0~1 사이의 확률로 변환하는 활성 함수이다.
+• 모든 클래스의 확률 합이 1이 된다.
+• 다중 분류 문제의 출력층에서 사용한다.
+그림
+Dense 출력
+[2.3, 1.2, 4.5]
+
+      │
+      ▼
+Softmax
+
+[0.09, 0.03, 0.88]
+
+가장 큰 확률 → 최종 예측
+특징
+• 확률로 변환
+• 확률의 합 = 1
+• 가장 큰 확률의 클래스를 선택
+
+
+5. ReLU
+의미
+• 가장 많이 사용하는 활성 함수이다.
+• 음수는 0, 양수는 그대로 출력한다.
+그림
+입력 → 출력
+
+-3 → 0
+-1 → 0
+ 0 → 0
+ 2 → 2
+ 5 → 5
+장점
+• 계산이 빠르다.
+• 기울기 소실(Vanishing Gradient) 문제를 줄인다.
+• CNN, DNN에서 가장 많이 사용된다.
+
+
+6. Epoch
+의미
+• 전체 학습 데이터를 한 번 모두 학습한 횟수를 의미한다.
+그림
+학습 데이터
+[전체]
+
+Epoch 1
+ ↓
+전체 데이터 1번 학습
+
+Epoch 2
+ ↓
+전체 데이터 다시 1번 학습
+
+Epoch 3
+ ↓
+전체 데이터 다시 1번 학습
+예를 들어
+• Epoch = 10
+• 전체 데이터를 10번 반복 학습한다.
+
+프롬프트2
+간략하게 설명 정리 해줘.
+
+답변
+시험 답안 요약
+
+용어
+설명
+손실함수(Loss Function)
+예측값과 실제값의 오차를 계산하는 함수이며, 손실값을 최소화하는 것이 학습의 목표이다.
+옵티마이저(Optimizer)
+손실 함수를 최소화하도록 가중치와 편향을 업데이트하는 알고리즘이다. 대표적으로 Adam, SGD가 있다.
+활성함수(Activation Function)
+뉴런의 출력값을 변환하여 비선형성을 추가하는 함수이다. 대표적으로 ReLU, Sigmoid, Softmax가 있다.
+Softmax
+출력값을 확률(0~1)로 변환하며 확률의 합이 1이 되도록 한다. 다중 분류의 출력층에서 사용한다.
+ReLU
+음수는 0, 양수는 그대로 출력하는 활성 함수로 계산이 빠르고 학습 성능이 우수하여 가장 많이 사용된다.
+Epoch
+전체 학습 데이터를 한 번 모두 학습한 횟수이며, Epoch가 증가할수록 반복 학습이 이루어진다.
+
+
+
+
+최종 답
+
+용어
+설명
+손실함수(Loss Function)
+예측값과 실제값의 오차를 계산하는 함수이며, 손실값을 최소화하는 것이 학습의 목표이다.
+옵티마이저(Optimizer)
+손실 함수를 최소화하도록 가중치와 편향을 업데이트하는 알고리즘이다. 대표적으로 Adam, SGD가 있다.
+활성함수(Activation Function)
+뉴런의 출력값을 변환하여 비선형성을 추가하는 함수이다. 대표적으로 ReLU, Sigmoid, Softmax가 있다.
+Softmax
+출력값을 확률(0~1)로 변환하며 확률의 합이 1이 되도록 한다. 다중 분류의 출력층에서 사용한다.
+ReLU
+음수는 0, 양수는 그대로 출력하는 활성 함수로 계산이 빠르고 학습 성능이 우수하여 가장 많이 사용된다.
+Epoch
+전체 학습 데이터를 한 번 모두 학습한 횟수이며, Epoch가 증가할수록 반복 학습이 이루어진다.
+
+
+
+
+관련 이미지를 여러개를 다 찾진 못했다. 그래도 검색하면서 여러 내용을 더 볼 수 있었다. 많은 걸 더 볼 수 있어서 오히려 괜찮았다. AI가 이미지를 출력 못해서 더 많이 시간을 썼다.
